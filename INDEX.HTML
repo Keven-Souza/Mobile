@@ -1,89 +1,80 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alume - Educação Profissional</title>
-    <!-- Inclusão do Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #ffffff;
-            flex-direction: column;
-            padding: 20px;
-        }
-        .container {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 15px;
-            border-radius: 10px;
-            max-width: 90%;
-        }
-        h1 {
-            font-size: 275%;
-            color: #333;
-        }
-        h2 {
-            font-size: 125%;
-            color: #333;
-        }
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            max-width: 250px;
-            margin: 10px auto;
-            padding: 12px;
-            font-size: 125%;
-            color: #fff;
-            background-color: #000000;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            text-decoration: none;
-            text-align: center;
-        }
-        .btn:hover {
-            background-color: #0d78c0;
-        }
-        .btn i {
-            margin-right: 10px;
-        }
-        .img-container {
-            margin-bottom: 15px;
-        }
-        .img-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-            .btn {
-                font-size: 0.9rem;
-                padding: 10px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="img-container">
-            <img src="./imagens.css/alume2.png" alt="Logo da Alume">
-        </div>
-        <h1>Educação Profissional</h1>
-        <h2> & Capacitação Profissional </h2>
-        <a href="#" class="btn"><i class="fas fa-book"></i>Cursos</a>
-        <a href="#" class="btn"><i class="fab fa-instagram"></i>Redes Sociais</a>
-    </div>
-</body>
-</html>
+import React from 'react';
+import { View, Text, TouchableOpacity, Image, StyleSheet, Linking } from 'react-native';
+
+const App = () => {
+  const openSocialMedia = (url) => {
+    Linking.openURL(url);
+  };
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.imgContainer}>
+        <Image
+          source={require('./imagens/alume2.png')} // Substitua com o caminho correto da imagem
+          style={styles.image}
+        />
+      </View>
+      <Text style={styles.heading}>Educação Profissional</Text>
+      <Text style={styles.subheading}> & Capacitação Profissional </Text>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => openSocialMedia('#')} // Substitua com o link do curso
+      >
+        <Text style={styles.buttonText}>Cursos</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => openSocialMedia('https://instagram.com')} // Substitua com o link correto para redes sociais
+      >
+        <Text style={styles.buttonText}>Redes Sociais</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+    padding: 20,
+  },
+  imgContainer: {
+    marginBottom: 15,
+  },
+  image: {
+    width: '100%',
+    height: undefined,
+    aspectRatio: 1,
+    borderRadius: 10,
+  },
+  heading: {
+    fontSize: 40,
+    color: '#333',
+    textAlign: 'center',
+  },
+  subheading: {
+    fontSize: 20,
+    color: '#333',
+    textAlign: 'center',
+  },
+  button: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    maxWidth: 250,
+    marginVertical: 10,
+    padding: 12,
+    borderRadius: 25,
+    backgroundColor: '#000000',
+  },
+  buttonText: {
+    fontSize: 18,
+    color: '#fff',
+    textAlign: 'center',
+  },
+});
+
+export default App;
